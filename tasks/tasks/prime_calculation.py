@@ -7,4 +7,5 @@ def primes_up_to(n):
         for j in range(2, ceil(sqrt(i))):
             if i % j == 0:
                 break
+    print("did a primes task")
     return primes
