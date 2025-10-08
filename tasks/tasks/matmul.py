@@ -22,5 +22,6 @@ def matmul_task(n=500):
         mat_a.append([randint(-32767, 32767) for _ in range(n)])
         mat_b.append([randint(-32767, 32767) for _ in range(n)])
 
+    res = matmul(mat_a, mat_b)
     print("did a matmul")
-    return matmul(mat_a, mat_b)
+    return res
