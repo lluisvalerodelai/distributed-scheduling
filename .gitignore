@@ -1,0 +1,10 @@
+io_file.bin
+.env
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
