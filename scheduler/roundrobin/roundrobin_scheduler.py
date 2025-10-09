@@ -49,8 +49,15 @@ def assign_task(conn, addr):
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((host, port))
     s.listen()
+    print("---------------------------------")
+    print("Listening on {host}:{port} for node work requests")
+    print("---------------------------------")
 
     while True:
         conn, addr = s.accept()
         node_thread = threading.Thread(target=assign_task, args=(conn, addr))
         node_thread.start()
+        if not node_assignment_queue:
+            print("---------------------------------")
+            print("ALL TASKS ARE FINISHED, WAITING FOR NODES TO FINISH")
+            print("---------------------------------")

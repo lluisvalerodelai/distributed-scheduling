@@ -16,6 +16,7 @@ while True:
         # wait for scheduler response
         task = scheduler_conn.recv(1024).decode().split(' ')
         print(task)
+        scheduler_conn.close()
         for i in tqdm(range(20)):
             time.sleep(1)
 
