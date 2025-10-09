@@ -1,3 +1,7 @@
+from tasks.tasks.array_sorting import sort_array 
+from tasks.tasks.fileIO import file_io
+from tasks.tasks.matmul import matmul_task
+from tasks.tasks.prime_calculation import primes_up_to_n
 import socket
 from tqdm import tqdm
 import time
@@ -9,17 +13,25 @@ port = 5000
 
 while True:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((host, port))
+        try:
+            s.connect((host, port))
+        except socket.ConnectionRefusedError:
+            break
 
+        # tell it were ready for a task
         s.sendall('FINISH'.encode())
 
         # wait for scheduler response
         task = s.recv(1024).decode().split(' ')
         print(task)
-        s.close()
-
-        for i in tqdm(range(20)):
-            time.sleep(1)
+        if task[1] == 'matmul':
+            matmul_task(425)
+        if task[1] == 'primes':
+            primes_up_to_n(2400000)
+        if task[1] == 'array':
+            sort_array(5000000)
+        if task[1] == 'fileIO':
+            file_io(1000000)
 
         if 'FINISH' in task:
             break

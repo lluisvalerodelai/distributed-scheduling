@@ -15,7 +15,7 @@ def matmul(A, B):
     return result
 
 
-def matmul_task(n=500):
+def matmul_task(n):
     mat_a = []
     mat_b = []
     for _ in range(n):

@@ -50,6 +50,7 @@ def assign_task(conn, addr):
     print(f"Tasks left: {tasks}")
     conn.close()
 
+start = time.time()
 
 t = []
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -77,3 +78,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 print("main finishing")
 for thrd in t:
     thrd.join()
+
+end = time.time()
+print("Total time (final tasks havent finished yet though)", end - start)

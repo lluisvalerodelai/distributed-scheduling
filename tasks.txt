@@ -15,7 +15,7 @@ Sort array - sort a (randomly generated at runtime) array of len 5 million & sor
 -> pi4B+: avg 15-16 seconds
 -> perf ratio: 2
 
-File IO - randomly read & write to a 6GB file 64KB at a time at random places in it
+File IO - randomly read & write to a 6GB file 64KB at a time at random places in it 1M times
 -> pi5: avg 6-7 seconds
 -> pi4B+: avg 20-21 seconds
 -> perf ratio: 3
