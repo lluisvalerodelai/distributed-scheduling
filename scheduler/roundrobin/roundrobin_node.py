@@ -1,22 +1,23 @@
 import socket
-from time import time
 from tqdm import tqdm
+import time
 
 host = '10.0.0.9'
-port = 5001
+port = 5000
 
 # open a connection and wait for scheduler to assign task
 
 while True:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        scheduler_conn = s.connect((host, port))
+        s.connect((host, port))
 
-        scheduler_conn.sendall('FINISH'.encode())
+        s.sendall('FINISH'.encode())
 
         # wait for scheduler response
-        task = scheduler_conn.recv(1024).decode().split(' ')
+        task = s.recv(1024).decode().split(' ')
         print(task)
-        scheduler_conn.close()
+        s.close()
+
         for i in tqdm(range(20)):
             time.sleep(1)
 
