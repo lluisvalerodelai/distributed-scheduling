@@ -1,4 +1,4 @@
-from tasks.tasks.array_sorting import sort_array 
+from ....tasks.tasks.array_sorting import sort_array 
 from tasks.tasks.fileIO import file_io
 from tasks.tasks.matmul import matmul_task
 from tasks.tasks.prime_calculation import primes_up_to_n
