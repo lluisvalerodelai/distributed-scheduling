@@ -27,7 +27,7 @@ while True:
             matmul_task(425)
         if task[1] == 'primes':
             print("Doing primes task")
-            primes_up_to_n(2400000)
+            primes_up_to(2400000)
         if task[1] == 'array':
             print("Doing array task")
             sort_array(5000000)
