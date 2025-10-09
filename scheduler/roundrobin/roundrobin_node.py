@@ -3,7 +3,7 @@ from time import time
 from tqdm import tqdm
 
 host = '10.0.0.9'
-port = 42069
+port = 5001
 
 # open a connection and wait for scheduler to assign task
 
