@@ -1,10 +1,8 @@
-from ....tasks.tasks.array_sorting import sort_array 
-from tasks.tasks.fileIO import file_io
-from tasks.tasks.matmul import matmul_task
-from tasks.tasks.prime_calculation import primes_up_to_n
 import socket
-from tqdm import tqdm
-import time
+from tasks.tasks.array_sorting import sort_array
+from tasks.tasks.file_io import file_io
+from tasks.tasks.matmul import matmul_task
+from tasks.tasks.prime_calculation import primes_up_to
 
 host = '10.0.0.9'
 port = 5000
@@ -15,7 +13,7 @@ while True:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         try:
             s.connect((host, port))
-        except socket.ConnectionRefusedError:
+        except ConnectionRefusedError:
             break
 
         # tell it were ready for a task
