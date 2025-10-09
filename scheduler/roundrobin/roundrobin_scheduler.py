@@ -1,4 +1,5 @@
 import socket
+import threading
 from random import shuffle
 
 # We have a set of tasks
@@ -18,21 +19,38 @@ print("---------------------------------")
 print(f"Task set: {tasks}")
 print("---------------------------------")
 
+node_assignment_queue = []
+
 # listen on socket
 host = '10.0.0.9'  # listen only on eth interface
-port = 42069
+port = 5001
+
+
+def assign_task(conn, addr):
+
+    # wait to recieve status from the node
+    status = conn.recv(1024).decode()
+    print(f"PROCESSING NODE [{addr}] STATE: {status}")
+
+    if status == 'FINISH':
+        task = tasks.pop()
+        if task:
+            conn.sendall(f"TASK {task}".encode())
+            print(f"Assigning task {task} to {addr}")
+        else:
+            conn.sendall("TASK FINISH".encode())
+            print("Sending FINISHED message")
+    else:
+        print("yeah lol this never happens")
+
+    conn.close()
+
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((host, port))
     s.listen()
-    print("socket bound")
 
     while True:
         conn, addr = s.accept()
-        print(f"New connection from {addr}")
-        data = conn.recv(1024).decode()
-        print(data)
-
-        next_task = 'task'
-        conn.send(next_task.encode())
-        conn.close()
+        node_thread = threading.Thread(target=assign_task, args=(conn, addr))
+        node_thread.start()
