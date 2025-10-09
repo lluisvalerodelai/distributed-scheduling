@@ -50,7 +50,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((host, port))
     s.listen()
     print("---------------------------------")
-    print("Listening on {host}:{port} for node work requests")
+    print(f"Listening on {host}:{port} for node work requests")
     print("---------------------------------")
 
     while True:
