@@ -25,12 +25,16 @@ while True:
         task = s.recv(1024).decode().split(' ')
         print(task)
         if task[1] == 'matmul':
+            print("Doing matmul task")
             matmul_task(425)
         if task[1] == 'primes':
+            print("Doing primes task")
             primes_up_to_n(2400000)
         if task[1] == 'array':
+            print("Doing array task")
             sort_array(5000000)
         if task[1] == 'fileIO':
+            print("Doing fileIO task")
             file_io(1000000)
 
         if 'FINISH' in task:
