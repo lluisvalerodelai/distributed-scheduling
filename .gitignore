@@ -1,4 +1,5 @@
 io_file.bin
+.env
 
 # Python bytecode
 __pycache__/
