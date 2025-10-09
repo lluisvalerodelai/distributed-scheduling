@@ -1,6 +1,6 @@
 import socket
 import threading
-from time import time
+import time
 from random import shuffle
 
 # We have a set of tasks
@@ -49,6 +49,7 @@ def assign_task(conn, addr):
 
     print(f"Tasks left: {tasks}")
     conn.close()
+
 
 start = time.time()
 
