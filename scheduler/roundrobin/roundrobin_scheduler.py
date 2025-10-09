@@ -13,7 +13,7 @@ array = "array"
 fileIO = "fileIO"
 
 # example set of tasks
-tasks = [matmul_task, matmul_task, primes, array, array, array, fileIO]
+tasks = [array, fileIO]
 shuffle(tasks)
 
 print("---------------------------------")
@@ -30,11 +30,9 @@ port = 5000
 def assign_task(conn, addr):
     global tasks
 
-    print(f"PROCESSING NODE [{addr}]", end='', flush=True)
-
     # wait to recieve status from the node
     status = conn.recv(1024).decode()
-    print(f" STATUS [{status}]")
+    print(f"PROCESSING NODE [{addr}]  STATUS [{status}]")
 
     if status in {'FINISH', 'FINISH\n'}:
 
@@ -53,6 +51,7 @@ def assign_task(conn, addr):
     conn.close()
 
 
+t = []
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((host, port))
     s.listen()
@@ -66,6 +65,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         conn, addr = s.accept()
 
         node_thread = threading.Thread(target=assign_task, args=(conn, addr))
+        t.append(node_thread)
 
         node_thread.start()
         if len(tasks) == 0:
@@ -75,3 +75,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             break
 
 print("main finishing")
+for thrd in t:
+    thrd.join()
