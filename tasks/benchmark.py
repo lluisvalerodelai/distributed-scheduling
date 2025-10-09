@@ -40,7 +40,7 @@ def get_avg_perf_times(iters, mat_size=1, array_size=1, primes_n=1, file_writes=
 
 
 times = get_avg_perf_times(
-    iters=2, mat_size=1, array_size=5_000_000, primes_n=1, file_writes=1
+    iters=2, mat_size=1, array_size=1, primes_n=2400000, file_writes=1
 )
 
 print_perf_times(times)
