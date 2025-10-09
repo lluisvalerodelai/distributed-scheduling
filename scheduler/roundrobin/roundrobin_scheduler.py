@@ -11,7 +11,7 @@ array = "array"
 fileIO = "fileIO"
 
 # example set of tasks
-tasks = {matmul_task, matmul_task, primes, array, array, array, fileIO}
+tasks = [matmul_task, matmul_task, primes, array, array, array, fileIO]
 shuffle(tasks)
 
 print("---------------------------------")
