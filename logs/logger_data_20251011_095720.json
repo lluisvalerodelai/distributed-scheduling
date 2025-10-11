@@ -1,0 +1,429 @@
+{
+  "events": [
+    {
+      "node": "pi5",
+      "event": "TASK_REQUESTED",
+      "time": 1760169289.4702342
+    },
+    {
+      "node": "10.0.0.12",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169289.4459465,
+      "task_name": "primes",
+      "task_instance": "primes_1"
+    },
+    {
+      "node": "pi4B2",
+      "event": "TASK_REQUESTED",
+      "time": 1760169289.7809694
+    },
+    {
+      "node": "10.0.0.11",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169289.7476227,
+      "task_name": "primes",
+      "task_instance": "primes_2"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_REQUESTED",
+      "time": 1760169289.7766252
+    },
+    {
+      "node": "10.0.0.10",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169289.750333,
+      "task_name": "array",
+      "task_instance": "array_1"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_FINISHED",
+      "time": 1760169306.4574504,
+      "task_name": "primes"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_REQUESTED",
+      "time": 1760169306.4592602
+    },
+    {
+      "node": "10.0.0.12",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169306.434155,
+      "task_name": "primes",
+      "task_instance": "primes_3"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_FINISHED",
+      "time": 1760169307.2390172,
+      "task_name": "array"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_REQUESTED",
+      "time": 1760169307.2402194
+    },
+    {
+      "node": "10.0.0.10",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169307.2131867,
+      "task_name": "array",
+      "task_instance": "array_2"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_FINISHED",
+      "time": 1760169320.0196164,
+      "task_name": "array"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_REQUESTED",
+      "time": 1760169320.0208883
+    },
+    {
+      "node": "10.0.0.10",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169319.9936774,
+      "task_name": "array",
+      "task_instance": "array_3"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_FINISHED",
+      "time": 1760169321.0427756,
+      "task_name": "primes"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_REQUESTED",
+      "time": 1760169321.0441196
+    },
+    {
+      "node": "10.0.0.12",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169321.019097,
+      "task_name": "matmul",
+      "task_instance": "matmul_1"
+    },
+    {
+      "node": "pi4B2",
+      "event": "TASK_FINISHED",
+      "time": 1760169328.8633063,
+      "task_name": "primes"
+    },
+    {
+      "node": "pi4B2",
+      "event": "TASK_REQUESTED",
+      "time": 1760169328.864529
+    },
+    {
+      "node": "10.0.0.11",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169328.8294916,
+      "task_name": "fileIO",
+      "task_instance": "fileIO_1"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_FINISHED",
+      "time": 1760169332.6905549,
+      "task_name": "matmul"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_REQUESTED",
+      "time": 1760169332.692118
+    },
+    {
+      "node": "10.0.0.12",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169332.6674607,
+      "task_name": "fileIO",
+      "task_instance": "fileIO_2"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_FINISHED",
+      "time": 1760169332.9581115,
+      "task_name": "array"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_REQUESTED",
+      "time": 1760169332.959332
+    },
+    {
+      "node": "10.0.0.10",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169332.9318383,
+      "task_name": "primes",
+      "task_instance": "primes_4"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_FINISHED",
+      "time": 1760169352.9370768,
+      "task_name": "fileIO"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_REQUESTED",
+      "time": 1760169352.9381683
+    },
+    {
+      "node": "10.0.0.12",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169352.912366,
+      "task_name": "primes",
+      "task_instance": "primes_5"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_FINISHED",
+      "time": 1760169365.118676,
+      "task_name": "primes"
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_REQUESTED",
+      "time": 1760169365.1200624
+    },
+    {
+      "node": "10.0.0.10",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169365.092409,
+      "task_name": "matmul",
+      "task_instance": "matmul_2"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_FINISHED",
+      "time": 1760169368.5206895,
+      "task_name": "primes"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_REQUESTED",
+      "time": 1760169368.5217745
+    },
+    {
+      "node": "10.0.0.12",
+      "event": "TASK_ASSIGNED",
+      "time": 1760169368.4958868,
+      "task_name": "matmul",
+      "task_instance": "matmul_3"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_FINISHED",
+      "time": 1760169380.058393,
+      "task_name": "matmul"
+    },
+    {
+      "node": "pi5",
+      "event": "TASK_REQUESTED",
+      "time": 1760169380.0599124
+    },
+    {
+      "node": "pi4B1",
+      "event": "TASK_FINISHED",
+      "time": 1760169395.7481012,
+      "task_name": "matmul"
+    },
+    {
+      "node": "pi4B2",
+      "event": "TASK_FINISHED",
+      "time": 1760169397.1979065,
+      "task_name": "fileIO"
+    }
+  ],
+  "tasks": {
+    "primes_1": {
+      "task_name": "primes",
+      "node": "10.0.0.12",
+      "assigned_time": 1760169289.4459465,
+      "events": [
+        {
+          "node": "10.0.0.12",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169289.4459465,
+          "task_name": "primes",
+          "task_instance": "primes_1"
+        }
+      ]
+    },
+    "primes_2": {
+      "task_name": "primes",
+      "node": "10.0.0.11",
+      "assigned_time": 1760169289.7476227,
+      "events": [
+        {
+          "node": "10.0.0.11",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169289.7476227,
+          "task_name": "primes",
+          "task_instance": "primes_2"
+        }
+      ]
+    },
+    "array_1": {
+      "task_name": "array",
+      "node": "10.0.0.10",
+      "assigned_time": 1760169289.750333,
+      "events": [
+        {
+          "node": "10.0.0.10",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169289.750333,
+          "task_name": "array",
+          "task_instance": "array_1"
+        }
+      ]
+    },
+    "primes_3": {
+      "task_name": "primes",
+      "node": "10.0.0.12",
+      "assigned_time": 1760169306.434155,
+      "events": [
+        {
+          "node": "10.0.0.12",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169306.434155,
+          "task_name": "primes",
+          "task_instance": "primes_3"
+        }
+      ]
+    },
+    "array_2": {
+      "task_name": "array",
+      "node": "10.0.0.10",
+      "assigned_time": 1760169307.2131867,
+      "events": [
+        {
+          "node": "10.0.0.10",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169307.2131867,
+          "task_name": "array",
+          "task_instance": "array_2"
+        }
+      ]
+    },
+    "array_3": {
+      "task_name": "array",
+      "node": "10.0.0.10",
+      "assigned_time": 1760169319.9936774,
+      "events": [
+        {
+          "node": "10.0.0.10",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169319.9936774,
+          "task_name": "array",
+          "task_instance": "array_3"
+        }
+      ]
+    },
+    "matmul_1": {
+      "task_name": "matmul",
+      "node": "10.0.0.12",
+      "assigned_time": 1760169321.019097,
+      "events": [
+        {
+          "node": "10.0.0.12",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169321.019097,
+          "task_name": "matmul",
+          "task_instance": "matmul_1"
+        }
+      ]
+    },
+    "fileIO_1": {
+      "task_name": "fileIO",
+      "node": "10.0.0.11",
+      "assigned_time": 1760169328.8294916,
+      "events": [
+        {
+          "node": "10.0.0.11",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169328.8294916,
+          "task_name": "fileIO",
+          "task_instance": "fileIO_1"
+        }
+      ]
+    },
+    "fileIO_2": {
+      "task_name": "fileIO",
+      "node": "10.0.0.12",
+      "assigned_time": 1760169332.6674607,
+      "events": [
+        {
+          "node": "10.0.0.12",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169332.6674607,
+          "task_name": "fileIO",
+          "task_instance": "fileIO_2"
+        }
+      ]
+    },
+    "primes_4": {
+      "task_name": "primes",
+      "node": "10.0.0.10",
+      "assigned_time": 1760169332.9318383,
+      "events": [
+        {
+          "node": "10.0.0.10",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169332.9318383,
+          "task_name": "primes",
+          "task_instance": "primes_4"
+        }
+      ]
+    },
+    "primes_5": {
+      "task_name": "primes",
+      "node": "10.0.0.12",
+      "assigned_time": 1760169352.912366,
+      "events": [
+        {
+          "node": "10.0.0.12",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169352.912366,
+          "task_name": "primes",
+          "task_instance": "primes_5"
+        }
+      ]
+    },
+    "matmul_2": {
+      "task_name": "matmul",
+      "node": "10.0.0.10",
+      "assigned_time": 1760169365.092409,
+      "events": [
+        {
+          "node": "10.0.0.10",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169365.092409,
+          "task_name": "matmul",
+          "task_instance": "matmul_2"
+        }
+      ]
+    },
+    "matmul_3": {
+      "task_name": "matmul",
+      "node": "10.0.0.12",
+      "assigned_time": 1760169368.4958868,
+      "events": [
+        {
+          "node": "10.0.0.12",
+          "event": "TASK_ASSIGNED",
+          "time": 1760169368.4958868,
+          "task_name": "matmul",
+          "task_instance": "matmul_3"
+        }
+      ]
+    }
+  },
+  "export_time": 1760169440.9561555,
+  "export_datetime": "2025-10-11T09:57:20.956157"
+}
