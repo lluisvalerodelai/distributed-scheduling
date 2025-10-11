@@ -3,6 +3,19 @@ import threading
 import time
 from random import shuffle
 
+
+# Helper function to send events to logger
+def send_logger_event(message, logger_host='10.0.0.9', logger_port=5001):
+    """Send an event message to the logger"""
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(1.0)
+            s.connect((logger_host, logger_port))
+            s.sendall(message.encode())
+    except Exception as e:
+        print(f"Failed to send logger event: {e}")
+
+
 # We have a set of tasks
 # We have the 3 nodes
 
@@ -54,6 +67,14 @@ def assign_task(conn, addr):
             task = tasks.pop()
             conn.sendall(f"TASK {task}".encode())
             print(f"Assigning task {task} to {addr}")
+
+            # Log the task assignment
+            # Format: NODE [HOSTNAME] EVENT TASK_ASSIGNED TIME [TIME] TASK [TASK_NAME]
+            hostname = addr[0]  # Use IP address as identifier for now
+            event_msg = (
+                f"NODE {hostname} EVENT TASK_ASSIGNED TIME {time.time()} TASK {task}"
+            )
+            send_logger_event(event_msg)
 
         else:
             conn.sendall("TASK FINISH".encode())
