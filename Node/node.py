@@ -35,11 +35,8 @@ class SchedulerInterface:
 
         while True:
 
-            print("here")
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as task_sock:
-                print("here")
                 task_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-                print("here")
                 task_sock.connect((self.scheduler_ip, self.scheduler_port))
                 print("Connected to scheduler to request a task")
 
@@ -81,5 +78,4 @@ hostname = socket.gethostname()
 scheduler = SchedulerInterface(scheduler_ip, scheduler_port, hostname)
 
 if scheduler.register():
-    print("here")
     scheduler.run_tasks()
