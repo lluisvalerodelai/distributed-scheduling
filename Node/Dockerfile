@@ -12,9 +12,10 @@ RUN pip install --no-cache-dir \
 WORKDIR /node
 
 # Copy tasks directory (required by node.py)
-COPY ../tasks /node/tasks
+COPY /tasks /node/tasks
+COPY /.dockerNode.env /node/.env
 
 # Copy node script
-COPY node.py /node/node.py
+COPY Node/node.py /node/node.py
 
 CMD ["python", "node.py"]
