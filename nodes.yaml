@@ -1,8 +1,0 @@
-node:
-  - hostname: "pi4b1"
-
-node:
-  - hostname: "pi4b2"
-
-node:
-  - hostname: "pi5"

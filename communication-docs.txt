@@ -1,0 +1,46 @@
+----------------------------------------------
+Specification for communication between nodes and scheduler process
+----------------------------------------------
+
+There are ultimatley 3 main kinds of communications which can happen
+-> A node wants to register with the scheduler
+-> The scheduler confirms a node succesfully registered
+-> The scheduler wants to assign a task to a node
+-> The node wants to let the scheduler know that a task is done
+(future) The scheduler wants to check that a node is still up
+
+
+-------
+REGISTER
+-------
+
+For a node to register with the scheduler it must send a register request:
+
+REGISTER|REQUEST|[hostname]
+    -> Hostname: plaintext name which the pi is requesting
+
+-------
+TASK ASSIGNMENT
+-------
+
+Once a node is registered, nodes have to request tasks from it
+TASK|REQUEST
+
+To which the scheduler needs to respond with:
+
+TASK|ASSIGN|[task_id]|[task_params]
+
+or if theres no tasks left to run:
+TASK|ASSIGN|REST
+
+task params is json that needs to be parsed
+Available task_id:
+-> 'matmul'
+-> 'primes'
+-> 'array'
+-> 'fileIO'
+
+The node then runs that task, until it responds with
+TASK|FINISH|[task_runtime]
+
+The node is in charge of timing how long the task took (the scheduler times how long it all took including sending the task, and recieving the confirmation)
