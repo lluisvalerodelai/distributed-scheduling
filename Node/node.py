@@ -13,25 +13,12 @@ class SchedulerInterface:
         self.scheduler_port = port
         self.hostname = hostname
 
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.socket.bind((self.scheduler_ip, self.scheduler_port))
-        self.socket.listen(5)
-        print(f"Node listening on {self.scheduler_ip}:{self.scheduler_port}")
-
     def register(self) -> bool:
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
                 sock.connect((self.scheduler_ip, self.scheduler_port))
                 sock.sendall(f'REGISTER|REQUEST|{self.hostname}'.encode())
-
-                confirmation = sock.recv(1024).decode().split('|')
-                if len(confirmation) >= 3 and confirmation[2] == 'true':
-                    print(
-                        f"Successfully registered with scheduler @ {self.scheduler_ip}:{self.scheduler_port} \
-                        with sched_hostname: {confirmation[3]}"
-                    )
-                    return True
+                return True
 
         except Exception as e:
             print("Error registering with scheduler:", e)
@@ -48,8 +35,11 @@ class SchedulerInterface:
 
         while True:
 
+            print("here")
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as task_sock:
+                print("here")
                 task_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                print("here")
                 task_sock.connect((self.scheduler_ip, self.scheduler_port))
                 print("Connected to scheduler to request a task")
 
@@ -91,4 +81,5 @@ hostname = socket.gethostname()
 scheduler = SchedulerInterface(scheduler_ip, scheduler_port, hostname)
 
 if scheduler.register():
+    print("here")
     scheduler.run_tasks()
