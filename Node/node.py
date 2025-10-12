@@ -53,6 +53,7 @@ class SchedulerInterface:
                 break
 
             args = json.loads(message[3])
+            print(f"assigned task {message[2]} with {args}")
             start = time.time()
             task_runner(message[2], args)
             end = time.time()
