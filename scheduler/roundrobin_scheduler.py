@@ -174,7 +174,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("---------------------------------")
 
     while True:
-        print("waiting for node to connect...")
         conn, addr = s.accept()
 
         node_thread = threading.Thread(target=manage_node, args=(conn, addr))
