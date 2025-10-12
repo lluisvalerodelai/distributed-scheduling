@@ -1,10 +1,10 @@
 import socket
 import json
 import time
-from ..tasks.tasks.array_sorting import sort_array
-from ..tasks.tasks.matmul import matmul_task as matmul
-from ..tasks.tasks.prime_calculation import primes_up_to as primes
-from ..tasks.tasks.file_io import file_io
+from tasks.tasks.array_sorting import sort_array
+from tasks.tasks.matmul import matmul_task as matmul
+from tasks.tasks.prime_calculation import primes_up_to as primes
+from tasks.tasks.file_io import file_io
 
 
 class SchedulerInterface:
