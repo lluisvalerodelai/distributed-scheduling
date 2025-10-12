@@ -165,6 +165,8 @@ print(f"Starting Round-Robin Scheduler on {host}:{port}")
 print(f"Scheduler hostname: {scheduler_hostname}")
 print("---------------------------------")
 
+start = time.time()
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind((host, port))
@@ -178,3 +180,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
         node_thread = threading.Thread(target=manage_node, args=(conn, addr))
         node_thread.start()
+
+end = time.time()
+
+print(f"Start to finish it took: {end - start}")

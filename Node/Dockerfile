@@ -18,4 +18,4 @@ COPY /.dockerNode.env /node/.env
 # Copy node script
 COPY Node/node.py /node/node.py
 
-CMD ["python", "node.py"]
+CMD ["python", "-u", "node.py"]
