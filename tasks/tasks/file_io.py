@@ -26,4 +26,4 @@ def file_io(n):
             f.seek(offset)
             f.write(data[::-1])  # just reverse bytes to modify minimally
 
-    print("did an io task")
+    print(f"did an io task (n={n})")

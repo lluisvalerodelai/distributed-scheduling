@@ -55,13 +55,13 @@ current_node_index = 0  # For round-robin assignment
 
 def get_task_args(task_name):
     if task_name == 'matmul':
-        return {"size": 100}
+        return {"size": 425}
     elif task_name == 'primes':
-        return {"max_n": 100000}
+        return {"max_n": 2400000}
     elif task_name == 'array':
-        return {"array_size": 10000}
+        return {"array_size": 5000000}
     elif task_name == 'fileIO':
-        return {"num_rw": 100}
+        return {"num_rw": 1000000}
     return {}
 
 
