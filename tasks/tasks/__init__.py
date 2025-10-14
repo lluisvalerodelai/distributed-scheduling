@@ -3,6 +3,8 @@ import numpy as np
 
 # precompile JIT matmul code
 WARMUP_SIZE = 512
+WARMUP_SIZE2 = 2000
 
 # Precompile the function for float64 arrays
 matmul_task(WARMUP_SIZE)
+matmul_task(WARMUP_SIZE2)
