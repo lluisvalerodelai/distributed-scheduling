@@ -30,7 +30,7 @@ def generate_parameter_ranges():
 
     ranges = {
         'matmul': {
-            'params': np.linspace(250, 2500, 20, dtype=int).tolist(),
+            'params': np.linspace(250, 2200, 20, dtype=int).tolist(),
             'param_name': 'size',
             'func': matmul_task,
         },
