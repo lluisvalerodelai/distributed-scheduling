@@ -1,10 +1,10 @@
 import os
 import numpy as np
-from numba import njit, prange
+from numba import njit, prange, types
 import multiprocessing
 
 
-@njit(parallel=True)
+@njit(parallel=True, cache=True)
 def matmul_task(n):
     # Allocate matrices
     A = np.empty((n, n), dtype=np.int32)
