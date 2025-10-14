@@ -40,14 +40,15 @@ for node in "${nodes[@]}"; do
   echo "Starting node $name..."
   docker run -d \
     --name "$name" \
+    --rm \
     --cpus="$cpus" \
     --memory="$mem" \
     -e NODE_NAME="$name" \
     -e PORT="$port" \
     --network=host \
     dockernode:latest \
-    python3 benchmark-node.py \
-    --output "/node/$output_file" \
+    python3 -u benchmark-node.py \
+    --output "/node/utils/benchmark-times/$output_file" \
     --iterations "$ITERATIONS" \
     --node-name "$name"
 
@@ -63,7 +64,7 @@ for node in "${nodes[@]}"; do
 
   # Copy results from container
   echo "Copying results from $name..."
-  docker cp "${name}:/node/${output_file}" "$BENCHMARK_DIR/${output_file}"
+  docker cp "${name}:/node/utils/benchmark-times/${output_file}" "$BENCHMARK_DIR/"
 
   if [ $? -eq 0 ]; then
     echo "✓ Successfully saved results to $BENCHMARK_DIR/$output_file"

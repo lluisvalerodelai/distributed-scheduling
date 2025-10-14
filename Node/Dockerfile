@@ -7,7 +7,8 @@ RUN apt-get update && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install Python packages for tasks
 RUN pip install --no-cache-dir \
     python-dotenv \
-    numpy
+    numpy \
+    numba
 
 # Set working directory
 WORKDIR /node
