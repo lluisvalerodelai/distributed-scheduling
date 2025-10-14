@@ -1,27 +1,13 @@
-from random import randint
-
-
-def matmul(A, B):
-    n = len(A)  # A and B are n x n
-
-    result = [[0] * n for _ in range(n)]
-
-    for i in range(n):
-        for j in range(n):
-            sum_val = 0
-            for k in range(n):
-                sum_val += A[i][k] * B[k][j]
-            result[i][j] = sum_val
-    return result
+import numpy as np
 
 
 def matmul_task(n):
-    mat_a = []
-    mat_b = []
-    for _ in range(n):
-        mat_a.append([randint(-32767, 32767) for _ in range(n)])
-        mat_b.append([randint(-32767, 32767) for _ in range(n)])
+    # Generate random matrices using numpy, multiply with multiple cores with @
+    mat_a = np.random.randint(-32767, 32767, size=(n, n), dtype=np.int32)
+    mat_b = np.random.randint(-32767, 32767, size=(n, n), dtype=np.int32)
 
-    res = matmul(mat_a, mat_b)
+    # Numpy's @ operator uses optimized multi-threaded BLAS
+    res = mat_a @ mat_b
+
     print(f"did a matmul ({n}x{n})")
     return res

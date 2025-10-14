@@ -37,7 +37,7 @@ print(f"Task set: {tasks}")
 print("---------------------------------")
 
 # Scheduler configuration
-host = '10.0.0.9'
+host = '0.0.0.0'
 port = 5000
 scheduler_hostname = socket.gethostname()
 
@@ -141,10 +141,6 @@ def manage_node(conn, addr):
                                         print("---------------------------------")
                                         print("ALL TASKS COMPLETED!")
                                         print("---------------------------------")
-                                else:
-                                    print(
-                                        f"Warning: Node {node_ip} sent FINISH but no task was assigned to it"
-                                    )
                         except ValueError:
                             print(
                                 f"Invalid duration value from {node_ip}: {message[2]}"

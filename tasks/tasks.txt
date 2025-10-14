@@ -1,21 +1,33 @@
 Benchmarks & tasks
 
-Matrix Multiplication - multiply together two 425x425 matrices
+Matrix Multiplication - multiply together two 425x425 matrices using numpy (MULTI-THREADED)
+-> Uses numpy's optimized BLAS libraries, will utilize available CPU cores
+-> Captures: multi-core scaling + per-core performance differences
+-> Default param: size=425
 -> pi5: avg 12-13 seconds
 -> pi4B+: avg 27-28 seconds
 -> perf ratio: 2.2
 
-Calculate primes - calculate all primes up to 2,400,000, return how many there are
+Calculate primes - calculate all primes up to 2,400,000 (SINGLE-THREADED)
+-> Pure Python loops, single-threaded computation
+-> Captures: pure single-core CPU performance differences
+-> Default param: max_n=2,400,000
 -> pi5: avg 16-17 seconds
 -> pi4B+: avg 37-38 seconds
 -> perf ratio: 2.2
 
-Sort array - sort a (randomly generated at runtime) array of len 5 million & sort it
+Sort array - sort a randomly generated array of len 5 million (SINGLE-THREADED)
+-> Python's built-in sort, single-threaded
+-> Captures: single-core CPU + memory access patterns
+-> Default param: array_size=5,000,000
 -> pi5: avg 7-8 seconds
 -> pi4B+: avg 15-16 seconds
 -> perf ratio: 2
 
-File IO - randomly read & write to a 6GB file 64KB at a time at random places in it 1M times
+File IO - randomly read & write to a 6GB file 4KB at a time, 1M operations (I/O BOUND)
+-> Sequential file operations
+-> Captures: storage speed differences (SSD vs HDD vs SD card)
+-> Default param: num_rw=1,000,000
 -> pi5: avg 6-7 seconds
 -> pi4B+: avg 20-21 seconds
 -> perf ratio: 3

@@ -20,8 +20,9 @@ for node in "${nodes[@]}"; do
     --memory="$mem" \
     -e NODE_NAME=$name \
     -e PORT=$port \
+    --network=host \
     dockernode:latest
 done
 
 echo "All nodes started!"
-./view-docker-nodes.sh
+utils/view-docker-nodes.sh

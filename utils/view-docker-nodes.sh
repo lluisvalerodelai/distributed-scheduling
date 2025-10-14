@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Nodes to monitor
+# All available nodes
 nodes=(
   "laptop-fast"
   "laptop-medium"
@@ -25,6 +25,25 @@ NC="\033[0m"  # No Color / reset
 if ! command -v docker &>/dev/null; then
   echo "Docker is not installed!"
   exit 1
+fi
+
+# If a node name is provided as an argument, filter the list
+if [ -n "$1" ]; then
+  target_node="$1"
+  found=false
+  for n in "${nodes[@]}"; do
+    if [ "$n" = "$target_node" ]; then
+      nodes=("$target_node")
+      found=true
+      break
+    fi
+  done
+
+  if [ "$found" = false ]; then
+    echo "Error: Node '$target_node' not found."
+    echo "Available nodes: ${nodes[*]}"
+    exit 1
+  fi
 fi
 
 # Start logs for each node in background

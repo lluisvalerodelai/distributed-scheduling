@@ -1,0 +1,72 @@
+nodes:
+  - name: pi5
+    type: Physical
+    cpus: 4.0
+    ram: 8GB
+    io_speed: SD-fast
+    arch: ARM
+    profile: Raspberry pi 5 (ARM)
+
+  - name: pi4
+    type: Physical
+    cpus: 4.0
+    ram: 4GB
+    io_speed: SD-med
+    arch: ARM
+    profile: Raspberry pi 4B+1 (ARM)
+
+  - name: pi4
+    type: Physical
+    cpus: 4.0
+    ram: 4GB
+    io_speed: SD-med
+    arch: ARM
+    profile: Raspberry pi 4B+2 (ARM)
+
+  - name: laptop-fast
+    type: Container
+    cpus: 2.0
+    ram: 4GB
+    io_speed: SSD-fast
+    arch: x86
+    profile: High-end x86
+
+  - name: laptop-medium
+    type: Container
+    cpus: 1.0
+    ram: 2GB
+    io_speed: SSD-fast
+    arch: x86
+    profile: Mid-tier x86
+
+  - name: laptop-constrained
+    type: Container
+    cpus: 0.5
+    ram: 1GB
+    io_speed: SSD-fast
+    arch: x86
+    profile: Memory-starved x86
+
+  - name: laptop-slow-io
+    type: Container
+    cpus: 1.0
+    ram: 2GB
+    io_speed: HDD-slow
+    arch: x86
+    profile: I/O bottleneck
+
+  - name: laptop-micro-1
+    type: Container
+    cpus: 0.5
+    ram: 1GB
+    io_speed: SSD-fast
+    arch: x86
+    profile: Pi 4B+ equivalent
+
+  - name: laptop-micro-2
+    type: Container
+    cpus: 0.5
+    ram: 1GB
+    io_speed: SSD-fast
+    arch: x86
+    profile: Pi 4B+ equivalent

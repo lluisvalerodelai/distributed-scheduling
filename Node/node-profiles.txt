@@ -1,0 +1,22 @@
+
+-----------------------
+        NODES
+-----------------------
+
+
++---------------------+----------+-------+------+-----------+------+-------------------------+
+| Node Name           | Type     | CPUs  | RAM  | I/O Speed | Arch | Profile                 |
++---------------------+----------+-------+------+-----------+------+-------------------------+
+| pi5                 | Physical | 4.0   | 8GB  | SD-fast   | ARM  | Raspberry pi 5 (ARM)    |
+| pi4                 | Physical | 4.0   | 4GB  | SD-med    | ARM  | Raspberry pi 4B+1 (ARM) |
+| pi4                 | Physical | 4.0   | 4GB  | SD-med    | ARM  | Raspberry pi 4B+2 (ARM) |
+| laptop-fast         | Container| 2.0   | 4GB  | SSD-fast  | x86  | High-end x86            |
+| laptop-medium       | Container| 1.0   | 2GB  | SSD-fast  | x86  | Mid-tier x86            |
+| laptop-constrained  | Container| 0.5   | 1GB  | SSD-fast  | x86  | Memory-starved x86      |
+| laptop-slow-io      | Container| 1.0   | 2GB  | HDD-slow  | x86  | I/O bottleneck          |
+| laptop-micro-1      | Container| 0.5   | 1GB  | SSD-fast  | x86  | Pi 4B+ equivalent       |
+| laptop-micro-2      | Container| 0.5   | 1GB  | SSD-fast  | x86  | Pi 4B+ equivalent       |
++---------------------+----------+-------+------+-----------+------+-------------------------+
+Total: 9 nodes
+Physical: 3 ARM nodes
+Virtual: 6 x86 containers

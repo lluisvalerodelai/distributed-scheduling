@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Add project root to Python path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import socket
 import json
 import time
@@ -16,6 +22,7 @@ class SchedulerInterface:
     def register(self) -> bool:
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+                print("connecting to scheduler...")
                 sock.connect((self.scheduler_ip, self.scheduler_port))
                 sock.sendall(f'REGISTER|REQUEST|{self.hostname}'.encode())
                 return True
