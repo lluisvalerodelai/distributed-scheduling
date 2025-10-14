@@ -6,7 +6,8 @@ RUN apt-get update && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Python packages for tasks
 RUN pip install --no-cache-dir \
-    python-dotenv
+    python-dotenv \
+    numpy
 
 # Set working directory
 WORKDIR /node
@@ -17,5 +18,8 @@ COPY /.dockerNode.env /node/.env
 
 # Copy node script
 COPY Node/node.py /node/node.py
+
+# Copy benchmark script
+COPY benchmark-node.py /node/benchmark-node.py
 
 CMD ["python", "-u", "node.py"]

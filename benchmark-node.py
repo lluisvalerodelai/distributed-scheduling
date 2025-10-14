@@ -25,12 +25,12 @@ def time_task(task_func, param_value):
 
 
 def generate_parameter_ranges():
-    # Defaults: matmul=425, primes=2400000, array=5000000, fileIO=1000000
+    # Defaults: matmul=1000, primes=2400000, array=5000000, fileIO=1000000
     # create ~20 points spanning from ~10% to ~200% of default values.
 
     ranges = {
         'matmul': {
-            'params': np.linspace(50, 850, 20, dtype=int).tolist(),
+            'params': np.linspace(100, 20000, 20, dtype=int).tolist(),
             'param_name': 'size',
             'func': matmul_task,
         },
@@ -53,7 +53,9 @@ def generate_parameter_ranges():
     return ranges
 
 
-def run_benchmarks(output_file='utils/benchmark-times/benchmark_results.csv', iterations_per_param=1):
+def run_benchmarks(
+    output_file='utils/benchmark-times/benchmark_results.csv', iterations_per_param=1
+):
 
     node_name = socket.gethostname()
     ranges = generate_parameter_ranges()

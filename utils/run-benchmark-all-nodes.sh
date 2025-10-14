@@ -36,31 +36,35 @@ for node in "${nodes[@]}"; do
   # Define output filename
   output_file="benchmark_results_${name}.csv"
 
-  # Start the node
+  # Start the node (run in background)
   echo "Starting node $name..."
   docker run -d \
     --name "$name" \
-    --rm \
     --cpus="$cpus" \
     --memory="$mem" \
     -e NODE_NAME="$name" \
     -e PORT="$port" \
+    -e CPUS="$cpus" \
     --network=host \
     dockernode:latest \
-    python3 app/benchmark-node.py \
-    --output "/app/$output_file" \
+    python3 benchmark-node.py \
+    --output "/node/$output_file" \
     --iterations "$ITERATIONS" \
     --node-name "$name"
 
   if [ $? -ne 0 ]; then
-    echo "ERROR: Benchmark failed on $name"
-    docker stop "$name" 2>/dev/null
+    echo "ERROR: Failed to start container for $name"
+    docker rm -f "$name" 2>/dev/null
     continue
   fi
 
+  # Wait for the container to finish
+  echo "Running benchmark on $name (this may take a while)..."
+  docker wait "$name" > /dev/null
+
   # Copy results from container
   echo "Copying results from $name..."
-  docker cp "${name}:/app/${output_file}" "$BENCHMARK_DIR/${output_file}"
+  docker cp "${name}:/node/${output_file}" "$BENCHMARK_DIR/${output_file}"
 
   if [ $? -eq 0 ]; then
     echo "✓ Successfully saved results to $BENCHMARK_DIR/$output_file"
@@ -68,9 +72,9 @@ for node in "${nodes[@]}"; do
     echo "ERROR: Failed to copy results from $name"
   fi
 
-  # Stop the container
-  echo "Stopping node $name..."
-  docker stop "$name" 2>/dev/null
+  # Remove the container
+  echo "Cleaning up container $name..."
+  docker rm "$name" 2>/dev/null
 
   echo ""
 done

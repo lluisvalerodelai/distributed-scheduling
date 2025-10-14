@@ -1,13 +1,28 @@
+import os
 import numpy as np
+from numba import njit, prange
+import multiprocessing
 
 
+@njit(parallel=True)
 def matmul_task(n):
-    # Generate random matrices using numpy, multiply with multiple cores with @
-    mat_a = np.random.randint(-32767, 32767, size=(n, n), dtype=np.int32)
-    mat_b = np.random.randint(-32767, 32767, size=(n, n), dtype=np.int32)
+    # Allocate matrices
+    A = np.empty((n, n), dtype=np.int32)
+    B = np.empty((n, n), dtype=np.int32)
 
-    # Numpy's @ operator uses optimized multi-threaded BLAS
-    res = mat_a @ mat_b
+    # Fill matrices with random numbers (Numba-compatible)
+    for i in prange(n):
+        for j in range(n):
+            A[i, j] = np.random.randint(-32767, 32767)
+            B[i, j] = np.random.randint(-32767, 32767)
 
-    print(f"did a matmul ({n}x{n})")
-    return res
+    # Allocate result matrix
+    C = np.zeros((n, n), dtype=np.int32)
+
+    # Matrix multiplication
+    for i in prange(n):
+        for j in range(n):
+            for k in range(n):
+                C[i, j] += A[i, k] * B[k, j]
+
+    return C
