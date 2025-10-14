@@ -44,7 +44,6 @@ for node in "${nodes[@]}"; do
     --memory="$mem" \
     -e NODE_NAME="$name" \
     -e PORT="$port" \
-    -e CPUS="$cpus" \
     --network=host \
     dockernode:latest \
     python3 benchmark-node.py \
