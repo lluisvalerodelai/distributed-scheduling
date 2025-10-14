@@ -53,10 +53,14 @@ def generate_parameter_ranges():
     return ranges
 
 
-def run_benchmarks(output_file='benchmark_results.csv', iterations_per_param=1):
+def run_benchmarks(output_file='utils/benchmark-times/benchmark_results.csv', iterations_per_param=1):
 
     node_name = socket.gethostname()
     ranges = generate_parameter_ranges()
+
+    # Create output directory if it doesn't exist
+    output_path = Path(output_file)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"Starting benchmark sweep on node: {node_name}")
     print(f"Output file: {output_file}")
@@ -163,8 +167,8 @@ if __name__ == "__main__":
     parser.add_argument(
         '--output',
         '-o',
-        default='benchmark_results.csv',
-        help='Output CSV file (default: benchmark_results.csv)',
+        default='utils/benchmark-times/benchmark_results.csv',
+        help='Output CSV file (default: utils/benchmark-times/benchmark_results.csv)',
     )
     parser.add_argument(
         '--iterations',
