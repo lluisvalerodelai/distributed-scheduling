@@ -14,13 +14,21 @@ from tasks.tasks.file_io import file_io
 
 
 def time_task(task_func, param_value):
+    import traceback
+    import gc
+
     start = time.time()
     try:
         task_func(param_value)
         end = time.time()
+
         return end - start
+
     except Exception as e:
-        print(f"Error executing task: {e}")
+        print(f"\n!!! Error executing task: {e}")
+        print(f"!!! Task: {task_func.__name__}, Param: {param_value}")
+        print("!!! Full traceback:")
+        traceback.print_exc()
         return None
 
 
@@ -30,7 +38,7 @@ def generate_parameter_ranges():
 
     ranges = {
         'matmul': {
-            'params': np.linspace(250, 2200, 20, dtype=int).tolist(),
+            'params': np.linspace(750, 5000, 20, dtype=int).tolist(),
             'param_name': 'size',
             'func': matmul_task,
         },

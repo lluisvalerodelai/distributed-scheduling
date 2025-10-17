@@ -1,5 +1,7 @@
 io_file.bin
 .env
+*.csv
+benchmark-times/
 
 # Python bytecode
 __pycache__/
