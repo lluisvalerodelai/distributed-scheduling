@@ -1,1 +1,4 @@
-Write a sweep for the range of parameter values (discretize & loop) & build a time estimation model for each node, for each task
+IDEA: instead of agent input being [requesting_node, node_state, task], what if its just [node_state, task] and it instead outputs a 9-vector of scores for each node. We then assign to all idle nodes the most appropiate task
+
+-> change line 24 of env to not be hardcoded (np.zeros)
+-> change the NodeCluster state to keep track of the expected duration & update that instead of the start time
