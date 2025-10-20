@@ -26,10 +26,7 @@ from log_utils import (
 
 
 def dummy_duration_fn(task_vector, node_id):
-    """
-    Dummy duration function for testing.
-    In reality, this would use your regression model from benchmarks.
-    """
+    # In reality, this would use regression model from benchmarks.
     task_type, parameter = decode_task(task_vector)
 
     if task_type == -1:  # No-op
