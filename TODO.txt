@@ -1,4 +1,6 @@
 IDEA: instead of agent input being [requesting_node, node_state, task], what if its just [node_state, task] and it instead outputs a 9-vector of scores for each node. We then assign to all idle nodes the most appropiate task
 
--> change line 24 of env to not be hardcoded (np.zeros)
--> Try out with current reward model (-1 at each *decision*), and also with reward 0 at all t except the final one, where reward is -total_time
+-> (idk) change line 24 of env to not be hardcoded (np.zeros)
+-> (-1) Try out with current reward model (-1 at each *decision*), and also with reward 0 at all t except the final one, where reward is -total_time
+-> (2) fix the whole mess of encoding->decoding->encoding we have. Everything should just always be encoded
+-> (1) theres some really funky stuff going on with the indexing into our concatenated input vector. Its easier to just use the already existing encode() function & concat directly.
