@@ -240,6 +240,7 @@ class Env:
     def step(
         self, actions: List[Tuple[int, np.ndarray]]
     ) -> Tuple[np.ndarray, Optional[List[int]], float, Dict]:
+        """takes a list of (node_id, task) with task being an un-encoded, un-normalized (task_type, param)"""
         # Execute one step in the environment.
         # Takes a list of (node_id, task_vector) pairs and assigns all tasks.
 
@@ -279,8 +280,8 @@ class Env:
             idle_nodes = self.cluster.get_idle_nodes()
             done = False
 
-        # Reward is -1 for each step (we want to minimize time)
-        reward = -1.0
+        # Reward is 0 for each step except the final when its 1
+        reward = 0 if done == False else -self.total_time_elapsed
 
         info = {
             'total_time': self.total_time_elapsed,

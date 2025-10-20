@@ -75,19 +75,27 @@ shuffle(task_queue)
 env = Env(dummy_duration_fn, task_queue)
 
 state, requesting_nodes = env.reset()
-print("state", state)
-print("requesting node", requesting_nodes)
-
-task_assignments = []
-
-for node_id in requesting_nodes:
-    task = task_queue.pop()
-    task_assignments.append((node_id, task))
-
-
-next_state, requesting_nodes, reward, info = env.step(task_assignments)
-print(pretty_print_state(next_state))
-print(next_state)
+done = False
+print(pretty_print_state(state))
 print(pretty_print_requesting_nodes(requesting_nodes))
-print(pretty_print_reward(reward))
-print(pretty_print_info(info))
+
+while not done:
+    task_assignments = []
+
+    for node_id in requesting_nodes:
+        try:
+            task = task_queue.pop()
+        except IndexError:
+            continue
+
+        task_assignments.append((node_id, task))
+
+    next_state, requesting_nodes, reward, info = env.step(task_assignments)
+
+    print(pretty_print_state(next_state))
+    print(pretty_print_requesting_nodes(requesting_nodes))
+    print(pretty_print_reward(reward))
+    print(pretty_print_info(info))
+    print("-" * 50)
+    if info['done'] == True or len(requesting_nodes) == 0:
+        break
