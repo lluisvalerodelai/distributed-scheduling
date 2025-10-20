@@ -99,7 +99,7 @@ class NodeCluster:
         self.num_nodes = NUM_NODES
 
         # For each node: [task_type, parameter, start_time, expected_duration]
-        self.node_tasks = np.full((self.num_nodes, 4), TASK_IDLE)
+        self.node_tasks = np.full((self.num_nodes, 4), TASK_IDLE, dtype=np.float32)
         self.current_time = 0.0
 
     def duration(self, task_vector: np.ndarray, node_id: int) -> float:
@@ -191,7 +191,7 @@ class NodeCluster:
 
     def reset(self):
         # Reset the cluster to initial state (all nodes idle).
-        self.node_tasks = np.full((self.num_nodes, 4), TASK_IDLE)
+        self.node_tasks = np.full((self.num_nodes, 4), TASK_IDLE, dtype=np.float32)
         self.current_time = 0.0
 
 

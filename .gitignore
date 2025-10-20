@@ -5,6 +5,7 @@ benchmark-times/
 
 # Python bytecode
 __pycache__/
+.mypy_cache/
 *.py[cod]
 
 # Virtual environment

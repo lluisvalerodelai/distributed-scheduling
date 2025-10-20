@@ -1,8 +1,3 @@
-"""
-Test file with scheduling heuristics for comparison with RL agent.
-Uses dummy_duration_fn to make intelligent task assignments.
-"""
-
 from random import shuffle
 import numpy as np
 from train_utils import dummy_duration_fn, task_queue, encode_state
@@ -25,6 +20,7 @@ from log_utils import (
     pretty_print_reward,
     pretty_print_info,
 )
+
 from scheduling_policies import (
     random_scheduler,
     greedy_scheduler,
@@ -32,7 +28,12 @@ from scheduling_policies import (
     optimal_matching_scheduler,
 )
 
+from agent import SchedulingAgent
+
 shuffle(task_queue)
+
+# Initialize the agent
+agent = SchedulingAgent(input_dim=59, hidden_dim=128)
 
 env = Env(dummy_duration_fn, task_queue)
 
@@ -42,9 +43,15 @@ total_reward = 0
 
 while not done:
 
-    task_assignments = greedy_scheduler(
-        requesting_nodes, task_queue, state, dummy_duration_fn
-    )
+    # Use agent to make scheduling decisions
+    task_assignments = []
+    for node_id in requesting_nodes:
+        # Get the best task for this node using the agent
+        best_task = agent.score(state, node_id, task_queue)
+        task_assignments.append((node_id, best_task))
+        # Remove the assigned task from the queue
+        if best_task in task_queue:
+            task_queue.remove(best_task)
 
     next_state, requesting_nodes, reward, info = env.step(task_assignments)
     total_reward += reward
@@ -58,6 +65,8 @@ while not done:
 
     if info['done'] == True:
         break
+
+    state = next_state
 
 print("=" * 50)
 print(f"Total reward: {total_reward:.4f}")
