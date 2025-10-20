@@ -204,7 +204,9 @@ class Env:
     """
 
     def __init__(
-        self, duration_fn, initial_task_queue: Optional[List[Tuple[int, int]]] = None
+        self,
+        duration_fn,
+        initial_task_queue: Optional[List[Tuple[int, int]]] = None,
     ):
 
         self.cluster = NodeCluster(duration_fn)
