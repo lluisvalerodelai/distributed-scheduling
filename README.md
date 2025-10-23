@@ -67,24 +67,4 @@ Four scheduling heuristics for evaluation:
 - Global shortest-job-first
 - Optimal greedy matching
 
-## Key Innovation
-
-The primary contribution is learning efficient task allocation with minimal profiling. By training on a diverse set of pre-defined task types with varying parameters, the model learns embeddings that capture task-node affinity. This enables rapid generalization: when presented with an unseen task parameter, the scheduler can make near-optimal allocation decisions in very few iterations, avoiding extensive profiling overhead.
-
-## Repository Structure
-
-```
-training/          # RL agent, environment simulation, PPO training
-tasks/             # Parametric workload generators
-scheduler/         # Distributed scheduler implementation (round-robin baseline)
-Node/              # Node configuration and interface
-utils/             # Benchmarking and profiling utilities
-```
-
-## Future Work
-
-- Complete PPO training loop integration
-- Evaluate generalization to novel task types
-- Deploy and benchmark on physical cluster
-- Explore transformer-based architectures for set-to-set assignment
-- Investigate multi-objective optimization (energy efficiency, fairness)
+Note: still in development
